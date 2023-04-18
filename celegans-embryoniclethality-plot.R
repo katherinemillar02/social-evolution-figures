@@ -20,3 +20,6 @@ ggplot(mutants, aes(x = mutant)) +
   ylim(0, 100) 
 
 
+
+
+
