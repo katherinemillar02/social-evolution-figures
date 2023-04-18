@@ -16,5 +16,7 @@ ggplot(mutants, aes(x = mutant)) +
   ylab("Percentage (%) of Progeny") +
   ggtitle("Crossed NIC Chr.III NILS to EG6180 males") +
   theme(plot.title = element_text(hjust = 0.5))+
-  theme_classic()
+  theme_classic() +
+  ylim(0, 100) 
+
 
