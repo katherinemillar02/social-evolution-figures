@@ -1,7 +1,9 @@
 medea_percentages <- c(54.5, 71.7, 43.3, 100, 48.8, 100, 96.8, 93.8)
-generations <- c("G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8")
+generations <- c("G1", "G2", "G2", "G3", "G3", "G4", "G5", "G6")
+sex <- c("Male", "Female", "Male", "Female",  "Male", "Female", "Female", "Female" )
 
-medea_df <- data.frame(generations, medea_percentages)
+
+medea_df <- data.frame(generations, medea_percentages, sex)
 
 
 # create a bar plot
@@ -27,13 +29,34 @@ ggplot(medea_df, aes(x = generations, y = medea_percentages)) +
   theme_classic()
 
 
-ggplot(medea_df, aes(x = generations, y = medea_percentages, color = generations)) +
-  geom_line(aes(group = 1), size = 1.5) +
-  geom_point()+
+
+
+
+medea_percentages <- c(54.5, 71.7, 43.3, 100, 48.8, 100, 96.8, 93.8)
+generations <- c("G1", "G2", "G2", "G3", "G3", "G4", "G5", "G6")
+sex <- c("Male", "Female", "Male", "Female",  "Male", "Female", "Female", "Female" )
+
+
+medea_df <- data.frame(generations, medea_percentages, sex)
+
+medea_plot <- medea_df %>% 
+ggplot(aes(fill = sex, x = generations, y = medea_percentages))+
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c("#087474","#c91d07")) +
   theme_classic()+
   labs(x = "Generation of WT D. Suzuki crossed with Medea D. Suzuki",
-       y = "Percentage of progeny with Medea",
-       color = "Generation")
+       y = "Percentage (%) of progeny with Medea",
+       fill = "Sex")
+
+
+
+
+medea_plot
+
+library(tidyverse)
+
+
+
 
 ggplot(medea_df, aes(x = generations, y = medea_percentages)) +
   geom_boxplot(fill = "gray", color = "black") +
